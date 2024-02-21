@@ -5,6 +5,7 @@ const operations = document.querySelectorAll(".operation");
 const equalBtn = document.querySelector(".equal");
 const clearBtn = document.querySelector(".clear");
 const deleteBtn = document.querySelector(".remove");
+const decimalBtn = document.querySelector(".decimal") 
 
 let currentInput = '';
 let operator = '';
@@ -37,14 +38,15 @@ operations.forEach(operatorBtn => {
 
 toggleBtn.addEventListener('click', function () {
    currentInput = -parseFloat(currentInput);
-   screen.innerHTML = inputs.join(' ') + ' ' + operator + ' ' + currentInput;
+   screen.innerHTML = currentInput
+
 });
 
 equalBtn.addEventListener('click', function () {
    // Check if there's a current input and an operator before performing the calculation
    if (currentInput !== '' && operator !== '') {
       inputs.push(parseFloat(currentInput));
-      let result = inputs[0]; // Initialize with the first input
+      result = inputs[0]; // Initialize with the first input
       let steps = inputs.join(' ');
       for (let i = 1; i < inputs.length; i += 2) {
          let nextOperator = inputs[i];
@@ -76,6 +78,7 @@ equalBtn.addEventListener('click', function () {
          steps += ' ' + nextOperator + ' ' + nextOperand + ' = ' + result;
       }
       screen.innerHTML = result;
+      currentInput = result
       // Reset inputs and operator for the next calculation
       inputs = [];
       operator = '';
