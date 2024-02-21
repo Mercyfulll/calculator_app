@@ -14,15 +14,6 @@
     text-align: center;
     padding-top: 4em;
 }
-/* .cover{
-    padding: 3px;
-    padding-top: 13px;
-    background-color: cadetblue;
-    text-align: center;
-    margin-left:auto;
-    margin-right: auto;
-    padding: 3em;
-} */
 button{
     padding: 10px;
     width:70px;
@@ -38,6 +29,10 @@ table{
 }
 .color-operator{
     background-color: #ffacac;
+  
+}
+.division{
+    font-size: larger;
 }
 
 @media (max-width: 760px) {

@@ -5,7 +5,8 @@ const operations = document.querySelectorAll(".operation");
 const equalBtn = document.querySelector(".equal");
 const clearBtn = document.querySelector(".clear");
 const deleteBtn = document.querySelector(".remove");
-const decimalBtn = document.querySelector(".decimal") 
+const decimalBtn = document.querySelector(".decimal");
+const percentageBtn = document.querySelector(".percentage")
 
 let currentInput = '';
 let operator = '';
@@ -62,17 +63,8 @@ equalBtn.addEventListener('click', function () {
                result *= nextOperand;
                break;
             case '/':
-               if (nextOperand !== 0) {
-                  result /= nextOperand;
-               } else {
-                  screen.innerHTML = "Error";
-                  return;
-               }
-               break;
-            case '%':
-               result = (result * 1) / 100;
-               break;
-            default:
+                  result = result / nextOperand;
+                  result.toFixed(10)
                break;
          }
          steps += ' ' + nextOperator + ' ' + nextOperand + ' = ' + result;
@@ -102,3 +94,27 @@ deleteBtn.addEventListener('click', function () {
       screen.innerHTML = 0;
    }
 });
+
+decimalBtn.addEventListener('click', function () {
+   // Check if a decimal point is already present in the current input
+   if (!currentInput.includes('.')) {
+      // If not, append the decimal point to the current input
+      currentInput += '.';
+      screen.innerHTML = currentInput
+      if(currentInput === ''){
+         screen.innerHTML = '0' + currentInput
+      }
+      
+   }
+})
+
+percentageBtn.addEventListener('click', function(){
+   let percentage = ''
+
+   if(currentInput !== ''){
+      percentage = (currentInput * 1) / 100
+      currentInput = percentage
+   }
+
+     screen.innerHTML = currentInput
+})
